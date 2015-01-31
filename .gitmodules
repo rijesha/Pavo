@@ -10,3 +10,6 @@
 [submodule "Adafruit_9DOF"]
 	path = Adafruit_9DOF
 	url = https://github.com/adafruit/Adafruit_9DOF.git
+[submodule "TinyGPS"]
+	path = TinyGPS
+	url = https://github.com/mikalhart/TinyGPS.git
