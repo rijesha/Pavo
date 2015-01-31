@@ -1,3 +1,12 @@
+#include <Wire.h>
+#include <Adafruit_LSM303_U.h>
+#include <Adafuit_9DOF.h>
+#include <Adafuit_Simple_AHRS.h>
+#include <Adafruit_L3GD20_U.h>
+#include <Adafruit_Sensor.h>
+
+
+
 /*
   Blink
   Turns on an LED on for one second, then off for one second, repeatedly.
