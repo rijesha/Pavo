@@ -10,7 +10,7 @@
 #include "Mag_Accel_data.h"
 #include "GPSin.h"
 #include "configuration.h"
-
+#include "servo_control.h"
 
 
 
@@ -24,12 +24,13 @@ void setup() {
   // initialize the digital pin as an output.
   pinMode(led, OUTPUT);     
   GPSInitialization();
+  servosetup();
 }
 
 // the loop routine runs over and over again forever:
 void loop() {
    
-  float* IMUData;
+
    float acellx;
    float acelly;
    float acellz;
@@ -37,21 +38,21 @@ void loop() {
    float magy;
    float magz;
  
-  float* GPSpos;
+ 
   float latitude;
   float longitude;
   float time;
   float date;
   float falt;
   
-  float* IMUData = GPSData();
+  float* IMUpos = IMUData();
  
-  acellx=*(IMUData);
-  acelly=*(IMUData + 1);
-  acellz=*(IMUData+2);
-  magx=*(IMUData+3);
-  magy=*(IMUData+4);
-  magz=*(IMUData+5);
+  acellx=*(IMUpos);
+  acelly=*(IMUpos + 1);
+  acellz=*(IMUpos+2);
+  magx=*(IMUpos+3);
+  magy=*(IMUpos+4);
+  magz=*(IMUpos+5);
   
   float* GPSpos = GPSData();
  

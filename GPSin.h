@@ -1,1 +1,2 @@
 void GPSInitialization();
+float* GPSData();

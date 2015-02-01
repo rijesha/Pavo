@@ -26,7 +26,7 @@ void GPSInitialization()
 long latitude, longitude;
 unsigned long fix_age, time, date;
 
-float* GPSdata(void)
+float* GPSData()
 {
   float GPSdatamat[5];
   
