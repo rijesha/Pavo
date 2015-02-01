@@ -15,7 +15,7 @@ float direc;
 
 float* IMUData(void){
   delay(500);
-  float IMUdata[6];
+  float IMUdata[7];
   /*so much stuff I dont understand*/
   sensor_t sensor;
   mag.getSensor(&sensor);
@@ -40,5 +40,6 @@ float* IMUData(void){
  else if (IMUdata[4]<0){
    direc=270-atan(IMUdata[3]/IMUdata[4])*(180/M_PI);
  }
+ IMUdata[6]=direc;
  return IMUdata;
 }

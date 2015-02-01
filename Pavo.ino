@@ -11,18 +11,14 @@
 #include "GPSin.h"
 #include "configuration.h"
 #include "servo_control.h"
+#include "earthMath.h"
 
 
 
-
-// Pin 13 has an LED connected on most Arduino boards.
-// give it a name:
-int led = 13;
 
 // the setup routine runs once when you press reset:
 void setup() {                
   // initialize the digital pin as an output.
-  pinMode(led, OUTPUT);     
   GPSInitialization();
   servosetup();
 }
@@ -37,13 +33,17 @@ void loop() {
    float magx;
    float magy;
    float magz;
- 
- 
+   float compasshead;
+  
+
   float latitude;
   float longitude;
   float time;
   float date;
   float falt;
+  
+  
+  float pitchangle;
   
   float* IMUpos = IMUData();
  
@@ -53,6 +53,7 @@ void loop() {
   magx=*(IMUpos+3);
   magy=*(IMUpos+4);
   magz=*(IMUpos+5);
+  compasshead=*(IMUpos+5);
   
   float* GPSpos = GPSData();
  
@@ -61,6 +62,27 @@ void loop() {
   time=*(GPSpos+2);
   date=*(GPSpos+3);
   falt=*(GPSpos+4);
+ 
+ //earthmath with falt, magx accelx, eccely etz
+ 
+ pitchangle = initflatten(acellx, acelly, acellz);
+ initmagnetservo(latitude, compasshead);
+ 
+  IMUpos = IMUData();
+ 
+  acellx=*(IMUpos);
+  acelly=*(IMUpos + 1);
+  acellz=*(IMUpos+2);
+  magx=*(IMUpos+3);
+  magy=*(IMUpos+4);
+  magz=*(IMUpos+5);
+ 
+ initdeclination(acellx, acelly, acellz, latitude);
+ 
+ 
+ 
+ 
+ //starlord
   
   
   
