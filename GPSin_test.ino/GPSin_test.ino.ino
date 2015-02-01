@@ -8,7 +8,7 @@ specific data we need, namely: longitude, latitude, altitude, and time.*/
 // This code assumes a 9600-baud serial GPS device hooked up on pins 4(rx) and 3(tx).
 
 TinyGPS gps;
-static void print_int(unsigned long val);
+static void print_int(unsigned long val, int len);
 
 #define RXPIN 4
 #define TXPIN 3
@@ -39,10 +39,23 @@ void loop()
           gps.get_datetime(&date, &time, &fix_age);
       } while(fix_age>20);
     }
-    Serial.println("\nfix_age: ");print_int(fix_age);
+    Serial.println("\nfix_age: "); print_int(fix_age, 5 );
     Serial.println("\nLatitude: ");Serial.println(latitude);
     Serial.println("\nLongitude: ");Serial.println(longitude);
     Serial.println("\nDate: ");Serial.println(date);
     Serial.println("\nTime: ");Serial.println(time);
   }
 }
+
+static void print_int(unsigned long val, int len)
+{
+  char sz[32];
+  sprintf(sz, "%ld", val);
+  sz[len] = 0;
+  for (int i=strlen(sz); i<len; ++i)
+    sz[i] = ' ';
+  if (len > 0) 
+    sz[len-1] = ' ';
+  Serial.print(sz);
+}
+
