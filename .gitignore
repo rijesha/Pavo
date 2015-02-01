@@ -1,0 +1,6 @@
+*.opensdf
+*.sdf
+*.suo
+*.vcxproj
+*.filters
+Visual Micro/

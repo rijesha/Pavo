@@ -48,14 +48,9 @@ void initializeallvalues(void){
  }
 }
 
-void setup(void) {                
-  Serial.begin(9600);
-      
-}
 
 
-
-void loop(void) {
+void Mag_Accel_data(void) {
   /* Get a new sensor event */ 
   sensors_event_t event; 
   accel.getEvent(&event);
