@@ -23,6 +23,11 @@ void servosetup()
 	servo3.attach(PINSERVO3);  // attaches the servo on pin 9 to the servo object 3
 }
 
+void servoneutral(){
+	servo2.write(90);
+	servo3.write(90);
+}
+
 void servomove(int servonumber, float degree){
 	/*function that moves a particular servo, input servo number and pos from 0-180 degrees that you want it to go to.
 

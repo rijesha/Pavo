@@ -1,6 +1,37 @@
 #include <math.h>
+#include "earthMath.h"
 #include "servo_control.h"
+#include "Mag_Accel_data.h"
+#include "GPSin.h"
 
+
+void completegeographicinitiallization(){
+	float dummy;
+	float* IMUpos = IMUData();
+	float* GPSpos = GPSData();
+	
+	// acellx = *(IMUpos);
+	// acelly=*(IMUpos + 1);
+	// acellz=*(IMUpos+2);
+	// magx=*(IMUpos+3);
+	// magy=*(IMUpos+4);
+	// magz=*(IMUpos+5);
+	// compasshead=*(IMUpos+6);
+
+	// latitude=*(GPSpos);
+	// longitude=*(GPSpos + 1);
+	// time=*(GPSpos+2);
+	// date=*(GPSpos+3);
+	// falt=*(GPSpos+4);
+	
+	IMUpos = IMUData();
+	dummy = initflatten(*(IMUpos), *(IMUpos + 1), *(IMUpos + 2));
+	initmagnetservo(*(GPSpos), *(IMUpos + 6));
+	void servoneutral();
+	IMUpos = IMUData();
+	initdeclination(*(IMUpos), *(IMUpos + 1), *(IMUpos + 2), *(GPSpos));
+
+}
 
 float initflatten(float x, float y, float z){
 /*initialise servo 2*/
@@ -56,9 +87,6 @@ void initmagnetservo(float latitude, float direc){
 }
 
 void initdeclination(float x, float y, float z, float lats){
-  servomove(2, 0);
-  servomove(3, 0);
-  //need to take measurement here again
   float originalpitch;
   float newpitch;
   originalpitch = initflatten(x,y,z);
