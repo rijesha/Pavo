@@ -28,13 +28,20 @@ void setup() {
 
 // the loop routine runs over and over again forever:
 void loop() {
+   float* IMUData = GPSData();
+ 
+  acellx=*(IMUData);
+  acelly=*(IMUData + 1);
+  acellz=*(IMUData+2);
+  magx=*(IMUData+3);
+  magy=*(IMUData+4);
+  magz=*(IMUData+5);
   
-  digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);               // wait for a second
-  digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);               // wait for a second
-//  float* theVar = GPSData();
-//  
-//  *(theVar) 
-//  *(theVar + 1)
+  float* GPSpos = GPSData();
+ 
+  latitude=*(GPSpos);
+  longitude=*(GPSpos + 1);
+  time=*(GPSpos+2);
+  date=*(GPSpos+3);
+  falt=*(GPSpos+4);
 }
