@@ -20,8 +20,9 @@ float magz;
 float direc;
 
 
-void initializeallvalues(void){
+float* IMUData(void){
   delay(500);
+  float IMUdata[6];
   /*so much stuff I dont understand*/
   sensor_t sensor;
   mag.getSensor(&sensor);
@@ -30,12 +31,12 @@ void initializeallvalues(void){
   accel.getEvent(&event);
   mag.getEvent(&event);
   /*initialisation of the magnectic and acceration values*/
- acellx=event.acceleration.x;
- acelly=event.acceleration.y;
- acellz=event.acceleration.z;
- magx=event.magnetic.x;
- magy=event.magnetic.y;
- magz=event.magnetic.z;
+ IMUdata[0]=event.acceleration.x;
+ IMUdata[1]=event.acceleration.y;
+ IMUdata[2]=event.acceleration.z;
+ IMUdata[3]=event.magnetic.x;
+ IMUdata[4]=event.magnetic.y;
+ IMUdata[5]=event.magnetic.z;
  /*calcualtion of direction based on the relative size of the the magx, magy values, 
  diregards magz at the moment, incorporate later
  */
@@ -46,19 +47,5 @@ void initializeallvalues(void){
  else if(magy<0){
    direc=270-atan(magx/magy)*(180/M_PI);
  }
-}
-
-
-
-void Mag_Accel_data(void) {
-  /* Get a new sensor event */ 
-  sensors_event_t event; 
-  accel.getEvent(&event);
-  mag.getEvent(&event);
-  delay(1000);
- Serial.println("X ");Serial.print(acellx);Serial.print("  ");
- Serial.println("Y ");Serial.print(acelly);Serial.print("  ");
- Serial.println("Z ");Serial.print(acellz);Serial.print("  ");
- 
- delay(500);
+ return IMUdata;
 }
