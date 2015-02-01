@@ -20,6 +20,7 @@
 void setup() {                
   // initialize the digital pin as an output.
   GPSInitialization();
+  initializeIMU();
   servosetup();
 }
 
