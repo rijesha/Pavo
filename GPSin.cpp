@@ -33,7 +33,7 @@ float* GPSData()
   if(GPS_USE_TEST==1){
     smartdelay(5000);  
     
-        GPSdatamat[0]=4124.8963;
+        GPSdatamat[0]=41.248963;
 	GPSdatamat[1]=08151.6838;
 	GPSdatamat[2]=170834;
 	GPSdatamat[3]=191194;

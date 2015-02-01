@@ -1,5 +1,6 @@
 #include <Servo.h> 
 #include "configuration.h"
+#include <Arduino.h>
 
 
 float pos1;    // variable to store the servo position of servo 1

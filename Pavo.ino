@@ -34,13 +34,15 @@ Serial.println("Done 1");
         
         while(1==1){
         do{
-          amdy=analogRead(POTENT)*(180/1024);
+          amdy=analogRead(POTENT)*(180./1024.);
           servomove(3,amdy);
-          delay(1000);
-          Serial.println(analogRead(POTENT));
+          delay(200);
+          Serial.println(analogRead(POTENT));//*(180/1024));
+          Serial.println(amdy);
         }while (digitalRead(BUTTONPIN)==LOW);
   Serial.println("yolo sauce");
 
         starlord(amdy);
+        
         } 
 }

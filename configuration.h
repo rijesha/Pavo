@@ -1,8 +1,8 @@
 // Port definitions
 
 //GPS
-#define GPSRXPIN 4
-#define GPSTXPIN 3
+#define GPSRXPIN A2
+#define GPSTXPIN A1
 
 // adafruit 9DOF
 
@@ -15,7 +15,7 @@
 
 // Buttons
 #define BUTTONPIN 8
-#define POTENT 9
+#define POTENT A0
 
 //GPS Data
 
