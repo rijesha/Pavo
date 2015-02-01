@@ -27,6 +27,7 @@ void setup()
 
 void loop()
 {
+  
   long latitude, longitude;
   unsigned long fix_age, time, date;
   
