@@ -1,3 +1,5 @@
+#include <Servo.h>
+
 #include <Wire.h>
 #include <Adafruit_LSM303_U.h>
 #include <Adafuit_9DOF.h>
