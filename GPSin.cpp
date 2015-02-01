@@ -2,8 +2,7 @@
 #include <TinyGPS.h>
 #include <configuration.h>
 
-
-/* The NMEA GPS data is taken from the ublox Neo 6M using the TinyGPS library. This code then extracts the
+ /* The NMEA GPS data is taken from the ublox Neo 6M using the TinyGPS library. This code then extracts the
 specific data we need, namely: longitude, latitude, altitude, date, and time.*/
 
 // This code assumes a 9600-baud serial GPS device hooked up on pins 4(rx) and 3(tx).
@@ -11,8 +10,6 @@ specific data we need, namely: longitude, latitude, altitude, date, and time.*/
 TinyGPS gps;
 
 static void smartdelay(unsigned long ms);
-static void print_float(float val, float invalid, int len, int prec);
-static void print_int(unsigned long val, unsigned long invalid, int len);
 static void print_date(TinyGPS &gps);
 int data=0;
 
@@ -26,8 +23,9 @@ void GPSInitialization()
 long latitude, longitude;
 unsigned long fix_age, time, date;
 
-int GPSdata[5]()
+int GPSdata()
 {
+  int GPSdata[5];
   while (data!=20){
     smartdelay(1000);
     gps.get_position(&latitude, &longitude, &fix_age);
