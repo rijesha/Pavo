@@ -4,7 +4,7 @@
 
 
 /* The NMEA GPS data is taken from the ublox Neo 6M using the TinyGPS library. This code then extracts the
-specific data we need, namely: longitude, latitude, altitude, and time.*/
+specific data we need, namely: longitude, latitude, altitude, date, and time.*/
 
 // This code assumes a 9600-baud serial GPS device hooked up on pins 4(rx) and 3(tx).
 
@@ -14,7 +14,7 @@ static void smartdelay(unsigned long ms);
 static void print_float(float val, float invalid, int len, int prec);
 static void print_int(unsigned long val, unsigned long invalid, int len);
 static void print_date(TinyGPS &gps);
-
+int data=0;
 
 SoftwareSerial nss(GPSRXPIN, GPSTXPIN);
 
@@ -23,24 +23,26 @@ void GPSInitialization()
   nss.begin(9600);
 }
 
-void loop()
+long latitude, longitude;
+unsigned long fix_age, time, date;
+
+int GPSdata[5]()
 {
-  long latitude, longitude;
-  unsigned long fix_age, time, date;
-  
-  gps.get_position(&latitude, &longitude, &fix_age);
-  Serial.println("\nLatitude: ");
-  print_float(latitude, TinyGPS::GPS_INVALID_F_ANGLE, 10, 6);
-  Serial.println("\nLongitude: ");
-  print_float(longitude, TinyGPS::GPS_INVALID_F_ANGLE, 11, 6);
-  Serial.println("\nfix_age: ");
-  print_int(fix_age, TinyGPS::GPS_INVALID_AGE, 5);
-  Serial.println("\nDate: ");
-  print_date(gps);
-  Serial.println("\nAltitude: ");
-  print_float(gps.f_altitude(), TinyGPS::GPS_INVALID_F_ALTITUDE, 7, 2);
-  
-  smartdelay(1000);
+  while (data!=20){
+    smartdelay(1000);
+    gps.get_position(&latitude, &longitude, &fix_age);
+    gps.get_datetime(&date, &time, &fix_age);;
+    float falt = gps.f_altitude();
+    if(latitude!=TinyGPS::GPS_INVALID_F_ANGLE){
+      data=data+1;
+    }
+  }
+  GPSdata[0]=latitude;
+  GPSdata[1]=longitude;
+  GPSdata[2]=time;
+  GPSdata[3]=date;
+  GPSdata[4]=falt;
+  return GPSdata;
 }
 
 static void smartdelay(unsigned long ms)
@@ -51,42 +53,6 @@ static void smartdelay(unsigned long ms)
     while (nss.available())
       gps.encode(nss.read());
   } while (millis() - start < ms);
-}
-
-static void print_float(float val, float invalid, int len, int prec)
-{
-  if (val == invalid)
-  {
-    while (len-- > 1)
-      Serial.print('*');
-    Serial.print(' ');
-  }
-  else
-  {
-    Serial.print(val, prec);
-    int vi = abs((int)val);
-    int flen = prec + (val < 0.0 ? 2 : 1); // . and -
-    flen += vi >= 1000 ? 4 : vi >= 100 ? 3 : vi >= 10 ? 2 : 1;
-    for (int i=flen; i<len; ++i)
-      Serial.print(' ');
-  }
-  smartdelay(0);
-}
-
-static void print_int(unsigned long val, unsigned long invalid, int len)
-{
-  char sz[32];
-  if (val == invalid)
-    strcpy(sz, "*******");
-  else
-    sprintf(sz, "%ld", val);
-  sz[len] = 0;
-  for (int i=strlen(sz); i<len; ++i)
-    sz[i] = ' ';
-  if (len > 0) 
-    sz[len-1] = ' ';
-  Serial.print(sz);
-  smartdelay(0);
 }
 
 static void print_date(TinyGPS &gps)
