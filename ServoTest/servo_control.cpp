@@ -18,9 +18,14 @@ Servo servo3;
 void servosetup()
 {
 	/*put in setup, initialises servos*/
-	servo1.attach(PINSERVO1);  // attaches the servo on pin 5 to the servo object 1 
-	servo2.attach(PINSERVO2);  // attaches the servo on pin 6 to the servo object 2
-	servo3.attach(PINSERVO3);  // attaches the servo on pin 7 to the servo object 3
+	servo1.attach(PINSERVO1);  // attaches the servo on pin 9 to the servo object 1 
+	servo2.attach(PINSERVO2);  // attaches the servo on pin 9 to the servo object 2
+	servo3.attach(PINSERVO3);  // attaches the servo on pin 9 to the servo object 3
+}
+
+void servoneutral(){
+	servo2.write(90);
+	servo3.write(90);
 }
 
 void servomove(int servonumber, float degree){
