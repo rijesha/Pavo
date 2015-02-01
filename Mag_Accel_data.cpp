@@ -4,7 +4,7 @@
 #include <Adafuit_Simple_AHRS.h>
 #include <Adafruit_L3GD20_U.h>
 #include <Adafruit_Sensor.h>
-#define pi 3.14159f
+#include <math.h>
 
 Adafruit_LSM303_Accel_Unified accel = Adafruit_LSM303_Accel_Unified(54321);
 Adafruit_LSM303_Mag_Unified mag = Adafruit_LSM303_Mag_Unified(12345);
@@ -40,22 +40,17 @@ void initializeallvalues(void){
  diregards magz at the moment, incorporate later
  */
  if(magy>=0){
-   direc=90-atan(magx/magy)*(180/pi);
+   direc=90-atan(magx/magy)*(180/M_PI);
  
  }
  else if(magy<0){
-   direc=270-atan(magx/magy)*(180/pi);
+   direc=270-atan(magx/magy)*(180/M_PI);
  }
 }
 
-void setup(void) {                
-  Serial.begin(9600);
-      
-}
 
 
-
-void loop(void) {
+void Mag_Accel_data(void) {
   /* Get a new sensor event */ 
   sensors_event_t event; 
   accel.getEvent(&event);
