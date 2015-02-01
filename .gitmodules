@@ -13,3 +13,6 @@
 [submodule "TinyGPS"]
 	path = TinyGPS
 	url = https://github.com/mikalhart/TinyGPS.git
+[submodule "TinyGPSPlus"]
+	path = TinyGPSPlus
+	url = https://github.com/mikalhart/TinyGPSPlus.git
