@@ -12,6 +12,6 @@ void starlord(float initangle)
   do{
   delay(250);
   servomove(3, initangle);
-  initangle=initangle+earthFreq;
+  initangle=initangle+90;//earthFreq;
   }while(digitalRead(BUTTONPIN)==HIGH);
 }
