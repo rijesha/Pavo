@@ -1,0 +1,1 @@
+void starlord(float initangle);

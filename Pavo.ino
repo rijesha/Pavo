@@ -12,6 +12,7 @@
 #include "earthMath.h"
 #include "Mag_Accel_data.h"
 #include "GPSin.h"
+#include "starlord.h"
 
 
 
@@ -26,11 +27,15 @@ void setup() {
 void loop() {
    
 	completegeographicinitiallization();
- 
- 
- 
- //starlord
-  
-  
-  
+        float amdy;
+        
+        while(1==1){
+        do{
+          amdy=analogRead(POTENT)*(180/1024);
+          servomove(3,amdy);
+        }while (digitalRead(BUTTONPIN)==LOW);
+
+
+        starlord(amdy);
+        } 
 }
