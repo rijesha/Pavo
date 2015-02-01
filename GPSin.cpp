@@ -18,9 +18,8 @@ static void print_date(TinyGPS &gps);
 
 SoftwareSerial nss(GPSRXPIN, GPSTXPIN);
 
-void setup()
+void GPSInitialization()
 {
-  Serial.begin(115200);
   nss.begin(9600);
 }
 
