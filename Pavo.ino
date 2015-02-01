@@ -8,6 +8,7 @@
 #include <TinyGPS.h>
 #include <SoftwareSerial.h>
 #include "GPSin.h"
+#include "configuration.h"
 
 
 

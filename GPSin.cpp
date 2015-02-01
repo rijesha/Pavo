@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
 #include <TinyGPS.h>
-
+#include "configuration.h"
 
 /* The NMEA GPS data is taken from the ublox Neo 6M using the TinyGPS library. This code then extracts the
 specific data we need, namely: longitude, latitude, altitude, and time.*/
@@ -10,10 +10,9 @@ specific data we need, namely: longitude, latitude, altitude, and time.*/
 TinyGPS gps;
 static void print_int(unsigned long val, int len);
 
-#define RXPIN 4
-#define TXPIN 3
 
-SoftwareSerial nss(RXPIN, TXPIN);
+
+SoftwareSerial nss(GPSRXPIN, GPSTXPIN);
 
 long latitude, longitude;
 unsigned long fix_age, time, date;
