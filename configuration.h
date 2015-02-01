@@ -9,8 +9,10 @@
 
 // servos
 
-#define SERVO1 5
-#define SERVO2 6
-#define SERVO3 7
+#define PINSERVO1 5
+#define PINSERVO2 6
+#define PINSERVO3 7
+
+
 
 
