@@ -8,14 +8,7 @@
 
 Adafruit_LSM303_Accel_Unified accel = Adafruit_LSM303_Accel_Unified(54321);
 Adafruit_LSM303_Mag_Unified mag = Adafruit_LSM303_Mag_Unified(12345);
-//accerleration values in m/s^2
-float acellx;
-float acelly;
-float acellz;
-//magnectic values in micro gauss
-float magx;
-float magy;
-float magz;
+
 /*direction in degrees 0-degreees=N, 180=S 90=E*/
 float direc;
 
@@ -40,12 +33,12 @@ float* IMUData(void){
  /*calcualtion of direction based on the relative size of the the magx, magy values, 
  diregards magz at the moment, incorporate later
  */
- if(magy>=0){
-   direc=90-atan(magx/magy)*(180/M_PI);
+ if(IMUdata[4]>=0){
+   direc=90-atan(IMUdata[3]/IMUdata[4])*(180/M_PI);
  
  }
- else if(magy<0){
-   direc=270-atan(magx/magy)*(180/M_PI);
+ else if (IMUdata[4]<0){
+   direc=270-atan(IMUdata[3]/IMUdata[4])*(180/M_PI);
  }
  return IMUdata;
 }
