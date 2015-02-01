@@ -7,7 +7,7 @@ void setup()
   servosetup();
 }
 
-int something=1800;
+int something=180;
 void loop()
 {
   servomove(1,something);
