@@ -60,4 +60,7 @@ void loop() {
   time=*(GPSpos+2);
   date=*(GPSpos+3);
   falt=*(GPSpos+4);
+  
+  
+  
 }
