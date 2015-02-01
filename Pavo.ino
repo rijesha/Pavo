@@ -9,6 +9,9 @@
 #include <SoftwareSerial.h>
 #include "GPSin.h"
 #include "configuration.h"
+#include <Servo.h> 
+
+
 
 
 
@@ -27,6 +30,7 @@ void setup() {
 
 // the loop routine runs over and over again forever:
 void loop() {
+  
   digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
   delay(1000);               // wait for a second
   digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
