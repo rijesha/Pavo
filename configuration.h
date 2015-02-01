@@ -9,13 +9,13 @@
 
 // servos
 
-#define PINSERVO1 5
-#define PINSERVO2 6
+#define PINSERVO1 9
+#define PINSERVO2 10
 #define PINSERVO3 11
 
 // Buttons
 #define BUTTONPIN 8
-#define POTENT A0
+#define POTENT 9
 
 //GPS Data
 
