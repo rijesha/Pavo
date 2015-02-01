@@ -17,6 +17,6 @@
 
 //GPS Data
 
-#define GPS_USE_TEST //Use some test data if this is uncommented. Else, use the incoming NMEA data.
+#define GPS_USE_TEST 1 //Use some test data if this is 1. Else, use the incoming NMEA data.
 
 

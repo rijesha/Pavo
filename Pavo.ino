@@ -4,19 +4,17 @@
 #include <Adafuit_Simple_AHRS.h>
 #include <Adafruit_L3GD20_U.h>
 #include <Adafruit_Sensor.h>
-#include "Mag_Accel_data.h"
 #include <TinyGPS.h>
 #include <SoftwareSerial.h>
+#include <Servo.h> 
+#include "Mag_Accel_data.h"
 #include "GPSin.h"
 #include "configuration.h"
-#include <Servo.h> 
 
 
 
 
 
-
- 
 // Pin 13 has an LED connected on most Arduino boards.
 // give it a name:
 int led = 13;
@@ -35,4 +33,8 @@ void loop() {
   delay(1000);               // wait for a second
   digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
   delay(1000);               // wait for a second
+//  float* theVar = GPSData();
+//  
+//  *(theVar) 
+//  *(theVar + 1)
 }
