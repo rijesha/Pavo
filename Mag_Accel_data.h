@@ -1,2 +1,2 @@
 float* IMUData();
-void initiallizeIMU();
+void initializeIMU();

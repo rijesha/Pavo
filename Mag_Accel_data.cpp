@@ -12,7 +12,7 @@ Adafruit_LSM303_Mag_Unified mag = Adafruit_LSM303_Mag_Unified(12345);
 /*direction in degrees 0-degreees=N, 180=S 90=E*/
 float direc;
 
-void initiallizeIMU(){
+void initializeIMU(){
 if(!accel.begin())
   {
     while(1);

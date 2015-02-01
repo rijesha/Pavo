@@ -2,9 +2,9 @@
 #include "configuration.h"
 
 
-float pos1;    // variable to store the servo position of servo 1
-float pos2;    // variable to store the servo position of servo 2
-float pos3;    // variable to store the servo position of servo 3
+int pos1;    // variable to store the servo position of servo 1
+int pos2;    // variable to store the servo position of servo 2
+int pos3;    // variable to store the servo position of servo 3
 /*
 pins variables for the three servos
 */
@@ -32,20 +32,21 @@ void servomove(int servonumber, float degree){
 	/*function that moves a particular servo, input servo number and pos from 0-180 degrees that you want it to go to.
 
 	*/
+  degree=(1000*degree/180)+1000;
 if (servonumber == 1){
-	pos1 = degree;
-	servo1.write(pos1);
+	pos1 = (int) degree;
+	servo1.writeMicroseconds(pos1);
 }
 
 else if (servonumber == 2){
-	pos2 = degree;
-	servo2.write(pos2);
+	pos2 = (int) degree;
+	servo2.writeMicroseconds(pos2);
 
 }
 
 else if (servonumber == 3){
-	pos3 = degree;
-	servo2.write(pos3);
+	pos3 = (int) degree;
+	servo2.writeMicroseconds(pos3);
 }
 
 }

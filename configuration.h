@@ -11,11 +11,11 @@
 
 #define PINSERVO1 5
 #define PINSERVO2 6
-#define PINSERVO3 7
+#define PINSERVO3 11
 
 // Buttons
 #define BUTTONPIN 8
-#define POTENT 9
+#define POTENT A0
 
 //GPS Data
 
