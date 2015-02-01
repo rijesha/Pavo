@@ -28,7 +28,23 @@ void setup() {
 
 // the loop routine runs over and over again forever:
 void loop() {
-   float* IMUData = GPSData();
+   
+  float* IMUData;
+   float acellx;
+   float acelly;
+   float acellz;
+   float magx;
+   float magy;
+   float magz;
+ 
+  float* GPSpos;
+  float latitude;
+  float longitude;
+  float time;
+  float date;
+  float falt;
+  
+  float* IMUData = GPSData();
  
   acellx=*(IMUData);
   acelly=*(IMUData + 1);
